@@ -26,8 +26,12 @@ func main() {
 	// CapitalNumbers("My Name Is Manikanta")
 
 	//Maps
-	KeysPrint()
-	Values()
+	// KeysPrint()
+	// Values()
+
+	TraingleNumbers()
+
+	// Pyramid()
 }
 
 // Prinitng Unique elements
@@ -86,7 +90,7 @@ func CapitalNumbers(s string) {
 	fmt.Println(count)
 }
 
-//sort maps by value
+//sort maps by values
 
 func Values() {
 	basket := map[string]int{"orange": 5, "apple": 7,
@@ -125,3 +129,54 @@ func KeysPrint() {
 		fmt.Println(k, basket[k])
 	}
 }
+
+//print Traingular Numbers
+
+func TraingleNumbers() {
+	var r int = 5
+	for i := 1; i <= r; i++ {
+		for j := 1; j <= i; j++ {
+			fmt.Printf("%d ", j)
+		}
+		fmt.Println()
+	}
+
+}
+
+// Pyramid starts
+func Pyramid() {
+
+	var rows int = 5
+	var k int
+	for i := 1; i <= rows; i++ {
+		k = 0
+		for space := 1; space <= rows-i; space++ {
+			fmt.Print("  ")
+		}
+		for {
+			fmt.Print("* ")
+			k++
+			if k == 2*i-1 {
+				break
+			}
+		}
+		fmt.Println("")
+	}
+}
+
+// r, temp := 5, 1
+// 	for i := 0; i < 5; i++ {
+// 		for j := 1; j < r-1; j++ {
+// 			fmt.Print("")
+// 		}
+// 		for k := 0; k <= i; k++ {
+// 			if k == 0 || i == 0 {
+// 				temp = 1
+// 			} else {
+// 				temp = temp * (i - k + 1) / k
+// 			}
+// 			fmt.Printf("%d ", temp)
+// 		}
+// 		fmt.Println(" ")
+// 	}
+// 	fmt.Println(r, temp)
