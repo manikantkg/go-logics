@@ -7,13 +7,6 @@ import (
 
 func main() {
 
-	// Prinitng Unique elements
-	// arr1 := []int{1, 3, 4, 5, 7, 4, 2, 2, 4, 5}
-	// fmt.Println("arr1>>", arr1)
-	// Unique_items := Unique(arr1)
-	// fmt.Println(Unique_items)
-	//---------------------------------
-
 	//Removing Susequences
 
 	// abc := Remove("aaaabnddkemkdflenkd")
@@ -23,7 +16,7 @@ func main() {
 	// Rem()
 
 	//Capital
-	// CapitalNumbers("My Name Is Manikanta")
+	// deck.CapitalNumbers("My Name Is Manikanta")
 
 	//Maps
 	// KeysPrint()
@@ -76,18 +69,6 @@ func Rem() {
 		}
 	}
 	fmt.Println(arry)
-}
-
-//Count number of capital numbers
-
-func CapitalNumbers(s string) {
-	var count int = 0
-	for _, v := range s {
-		if v >= 65 && v <= 90 {
-			count++
-		}
-	}
-	fmt.Println(count)
 }
 
 //sort maps by values
