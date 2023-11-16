@@ -9,6 +9,8 @@ type User struct {
 	Status bool
 }
 
+
+//No inheritence && treated as class or parent
 func main() {
 	mani := User{"Manikanta", 33, "manikanta@123.com", true}
 	//fmt.Println(mani)
