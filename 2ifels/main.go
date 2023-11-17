@@ -1,9 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sync"
+)
 
-//if-else Condition implemented
-//map initialization implementation
+// if-else Condition implemented
+// map initialization implementation
 func main() {
 	/* var number int = 10
 	var result string
@@ -26,15 +29,35 @@ func main() {
 		6: "Saturday",
 		7: "Sunday",
 	}
-	fmt.Println(a) */
+	fmt.Println(a)
 
-	var num int
+	for i, _ := range a {
+		fmt.Println(a[i])
+	}
+	fmt.Println(">>>>>>>>>>>", a[3]) */
+
+	/* var num int
 	fmt.Println("Enter the Number")
 	fmt.Scanln(&num)
 	if num >= 1 && num <= 5 {
 		fmt.Println("Mid of the week")
 	} else if num >= 6 {
 		fmt.Println("Weekend!!")
+	} */
+
+	var wg sync.WaitGroup
+	wg.Add(10)
+	abc := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+
+	for i, _ := range abc {
+
+		go func(i int) {
+			defer wg.Done()
+			fmt.Println(i, abc[i])
+		}(i)
+
+		// fmt.Println(i, v)
 	}
+	wg.Wait()
 
 }
