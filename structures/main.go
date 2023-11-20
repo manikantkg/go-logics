@@ -3,12 +3,11 @@ package main
 import "fmt"
 
 type User struct {
-	Name   string
+	Name   string //must start with Capital name only otherwise it wont export
 	Age    int
 	Email  string
 	Status bool
 }
-
 
 //No inheritence && treated as class or parent
 func main() {
