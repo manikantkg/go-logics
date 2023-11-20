@@ -13,19 +13,25 @@ func main() {
 	// }
 
 	// for _, v := range days {
-	// 	fmt.Printf("index is %v and value is %v\n", v)
+	// 	fmt.Printf("index is  and value is %v\n", v)
 	// }
 
-	rawValue := 1
+	rowValue := 1
 
-	for rawValue < 10 {
+	for rowValue < 10 {
 
-		if rawValue == 5 {
-			rawValue++
+		if rowValue == 5 {
+			goto lco
+		}
+
+		if rowValue == 5 {
+			rowValue++
 			break //continue also works but understand the difference between break and continue
 		}
-		fmt.Println("Value is ", rawValue)
-		rawValue++
+		fmt.Println("Value is ", rowValue)
+		rowValue++
 	}
 
+lco:
+	fmt.Println("Jumping learn Golang")
 }
