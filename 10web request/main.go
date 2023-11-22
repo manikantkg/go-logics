@@ -19,7 +19,7 @@ func main() {
 	fmt.Printf("Resp is of type: %T\n", resp)
 	// fmt.Println("respoinse is >>", resp)
 
-	defer resp.Body.Close() //caller's responsibility to close the content
+	defer resp.Body.Close() //caller's responsibility to close the connection
 
 	databytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
