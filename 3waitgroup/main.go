@@ -14,7 +14,7 @@ func main() {
 
 		go func(i int) {
 			defer wg.Done()
-			fmt.Println(i, abc[i])
+			fmt.Println("i is :", i, "index value is >>", abc[i])
 		}(i)
 
 		// fmt.Println(i, v)
