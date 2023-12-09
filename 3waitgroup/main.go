@@ -7,7 +7,7 @@ import (
 
 func main() {
 	var wg sync.WaitGroup
-	wg.Add(10)
+	wg.Add(11)
 	abc := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 
 	for i, _ := range abc {
@@ -21,3 +21,24 @@ func main() {
 	}
 	wg.Wait()
 }
+
+// func main() {
+// 	var wg sync.WaitGroup
+// 	wg.Add(2)
+// 	go hello(&wg)
+// 	go world()
+// 	wg.Done()
+
+// 	fmt.Println("Mani ends!!!")
+
+// }
+
+// func hello(wg sync.WaitGroup) {
+// 	defer wg.Done()
+// 	fmt.Println("Hello")
+
+// }
+// func world(wg sync.WaitGroup) {
+// 	defer wg.Done()
+// 	fmt.Println("World")
+// }
