@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+)
 
 func main() {
 	var batman string = "I am batman"
@@ -12,9 +15,11 @@ func main() {
 
 	thor := "I am thor"
 	fmt.Println(thor)
+	fmt.Println(reflect.TypeOf(thor)) //finding type with the help of reflect package
+	// fmt.Println(reflect.Interface, "thor")
 
 	thorRating := 3
-	fmt.Printf("thorRating is %v and type %T", thorRating, thorRating)
+	fmt.Printf("thorRating is %v and type %T \n", thorRating, thorRating)
 
 	var Itonman, CapAmerica string = "I am Ironman", "I am captain America"
 	fmt.Println(Itonman, CapAmerica)
