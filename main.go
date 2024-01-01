@@ -161,3 +161,4 @@ func Pyramid() {
 // 		fmt.Println(" ")
 // 	}
 // 	fmt.Println(r, temp)
+
