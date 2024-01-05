@@ -1,9 +1,6 @@
 package main
 
-import (
-	"fmt"
-	"sort"
-)
+import "fmt"
 
 func main() {
 
@@ -16,13 +13,13 @@ func main() {
 	// Rem()
 
 	//Capital
-	// deck.CapitalNumbers("My Name Is Manikanta")
+	deck.CapitalNumbers(deck{}, "My Name Is Manikanta")
 
 	//Maps
 	// KeysPrint()
 	// Values()
 
-	TraingleNumbers()
+	//TraingleNumbers()
 
 	// Pyramid()
 }
@@ -37,9 +34,11 @@ func Unique(arr []int) []int {
 			result = append(result, arr[i])
 		}
 	}
+	fmt.Println(result)
 	return result
 }
 
+/*
 //Removing Susequences
 
 func Remove(s string) string {
@@ -145,20 +144,21 @@ func Pyramid() {
 	}
 }
 
-// r, temp := 5, 1
-// 	for i := 0; i < 5; i++ {
-// 		for j := 1; j < r-1; j++ {
-// 			fmt.Print("")
-// 		}
-// 		for k := 0; k <= i; k++ {
-// 			if k == 0 || i == 0 {
-// 				temp = 1
-// 			} else {
-// 				temp = temp * (i - k + 1) / k
-// 			}
-// 			fmt.Printf("%d ", temp)
-// 		}
-// 		fmt.Println(" ")
-// 	}
-// 	fmt.Println(r, temp)
-
+	// r, temp := 5, 1
+	// 	for i := 0; i < 5; i++ {
+	// 		for j := 1; j < r-1; j++ {
+	// 			fmt.Print("")
+	// 		}
+	// 		for k := 0; k <= i; k++ {
+	// 			if k == 0 || i == 0 {
+	// 				temp = 1
+	// 			} else {
+	// 				temp = temp * (i - k + 1) / k
+	// 			}
+	// 			fmt.Printf("%d ", temp)
+	// 		}
+	// 		fmt.Println(" ")
+	// 	}
+	// 	fmt.Println(r, temp)
+}
+*/
