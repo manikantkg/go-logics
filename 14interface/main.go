@@ -31,36 +31,6 @@ func (e Emp) PrintSalary(basic int, tax int) int {
 	return basic - salary
 }
 
-func main() {
-	/* var e1 Employee
-
-	e1 = Emp(1)
-	e1.PrintName("Manikanta")
-	fmt.Println(e1.PrintSalary(50000, 5)) */
-
-	/* var p Ploygons
-
-	p = Pentagon(50)
-
-	var o Pentagon = p.(Pentagon)
-	o.NumOfSides()
-
-	var obj Object = Pentagon(50)
-	obj.NumOfSides()
-	var pent Pentagon = obj.(Pentagon)
-	pent.Perimeter() */
-
-	var bmw Vehicle
-	bmw = Car("World Top Brand")
-
-	var labour Human
-	labour = Man("Software Developer")
-
-	for i, j := range bmw.Structure() {
-		fmt.Printf("%-15s <=====> %15s\n", j, labour.Structure()[i])
-	}
-}
-
 // Define Type that Satisfies Multiple Interfaces
 
 type Ploygons interface {
@@ -113,4 +83,51 @@ func (m Man) Structure() []string {
 
 func (m Man) Performance() string {
 	return "8 Hrs/Day"
+}
+func main() {
+	/* var e1 Employee
+
+	e1 = Emp(1)
+	e1.PrintName("Manikanta")
+	fmt.Println(e1.PrintSalary(50000, 5)) */
+
+	/* var p Ploygons
+
+	p = Pentagon(50)
+
+	var o Pentagon = p.(Pentagon)
+	o.NumOfSides()
+
+	var obj Object = Pentagon(50)
+	obj.NumOfSides()
+	var pent Pentagon = obj.(Pentagon)
+	pent.Perimeter()
+
+	var bmw Vehicle
+	bmw = Car("World Top Brand")
+
+	var labour Human
+	labour = Man("Software Developer")
+
+	for i, j := range bmw.Structure() {
+		fmt.Printf("%-15s <=====> %15s\n", j, labour.Structure()[i])
+	}*/
+
+	var m Methods
+	m = Find(1)
+	m.Area(5)
+
+}
+
+type Methods interface {
+	Area(s int)
+}
+
+type Find int
+
+func (a Find) Area(s int) {
+	square := s * s
+	fmt.Println("aera of a triangle is :", square)
+	// return square
+
 }
