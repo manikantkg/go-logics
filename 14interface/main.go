@@ -84,38 +84,48 @@ func (m Man) Structure() []string {
 func (m Man) Performance() string {
 	return "8 Hrs/Day"
 }
+
 func main() {
 	/* var e1 Employee
 
-	e1 = Emp(1)
-	e1.PrintName("Manikanta")
-	fmt.Println(e1.PrintSalary(50000, 5)) */
+	   e1 = Emp(1)
+	   e1.PrintName("Manikanta")
+	   fmt.Println(e1.PrintSalary(50000, 5)) */
 
 	/* var p Ploygons
 
-	p = Pentagon(50)
+	   p = Pentagon(50)
 
-	var o Pentagon = p.(Pentagon)
-	o.NumOfSides()
+	   var o Pentagon = p.(Pentagon)
+	   o.NumOfSides()
 
-	var obj Object = Pentagon(50)
-	obj.NumOfSides()
-	var pent Pentagon = obj.(Pentagon)
-	pent.Perimeter()
+	   var obj Object = Pentagon(50)
+	   obj.NumOfSides()
+	   var pent Pentagon = obj.(Pentagon)
+	   pent.Perimeter()
 
-	var bmw Vehicle
-	bmw = Car("World Top Brand")
+	   var bmw Vehicle
+	   bmw = Car("World Top Brand")
 
-	var labour Human
-	labour = Man("Software Developer")
+	   var labour Human
+	   labour = Man("Software Developer")
 
-	for i, j := range bmw.Structure() {
-		fmt.Printf("%-15s <=====> %15s\n", j, labour.Structure()[i])
-	}*/
+	   for i, j := range bmw.Structure() {
+	   	fmt.Printf("%-15s <=====> %15s\n", j, labour.Structure()[i])
+	   }*/
 
-	var m Methods
-	m = Find(1)
-	m.Area(5)
+	/* var m Methods
+	   m = Find(2)
+	   m.Area(5) */
+
+	//interview quesion
+	// Example usage
+	circle := Circle{Radius: 5.0}
+	rectangle := Rectangle{Width: 4.0, Height: 6.0}
+
+	// Calculate and print areas
+	printArea(circle)
+	printArea(rectangle)
 
 }
 
@@ -130,4 +140,38 @@ func (a Find) Area(s int) {
 	fmt.Println("aera of a triangle is :", square)
 	// return square
 
+}
+
+//Interview programme
+//create an interface Area() that return mEthod area() and we have to calculate area of any shape
+
+// Shape interface with an Area method
+type Shape interface {
+	Area() float64
+}
+
+// Circle type implementing the Shape interface
+type Circle struct {
+	Radius float64
+}
+
+// Area method for Circle
+func (c Circle) Area() float64 {
+	return 3.14 * c.Radius * c.Radius
+}
+
+// Rectangle type implementing the Shape interface
+type Rectangle struct {
+	Width  float64
+	Height float64
+}
+
+// Area method for Rectangle
+func (r Rectangle) Area() float64 {
+	return r.Width * r.Height
+}
+
+// Example function to calculate and print the area of any shape implementing the Shape interface
+func printArea(s Shape) {
+	fmt.Printf("Area of the shape: %.2f\n", s.Area())
 }
