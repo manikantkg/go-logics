@@ -13,7 +13,7 @@ func main() {
 	// Rem()
 
 	//Capital
-	deck.CapitalNumbers(deck{}, "My Name Is Manikanta")
+	//deck.CapitalNumbers(deck{}, "My Name Is Manikanta")
 
 	//Maps
 	// KeysPrint()
@@ -22,7 +22,12 @@ func main() {
 	//TraingleNumbers()
 
 	// Pyramid()
+	
 }
+
+//factorial number logic
+
+
 
 // Prinitng Unique elements
 func Unique(arr []int) []int {
