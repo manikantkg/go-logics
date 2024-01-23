@@ -1,12 +1,16 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 func main() {
 	//Fact(4)
 	//numbers()
 	//pyramid()
-	ReversePyramid()
+	//ReversePyramid()
+	SortSlice()
 
 }
 
@@ -43,7 +47,7 @@ func pyramid() {
 
 }
 
-//Reverse pyramid
+// Reverse pyramid
 func ReversePyramid() {
 	var rows int = 5
 
@@ -59,4 +63,17 @@ func ReversePyramid() {
 		}
 		fmt.Println("")
 	}
+}
+
+//sorting slice
+
+func SortSlice() {
+	a := []int{5, 3, 4, 7, 8, 9}
+	sort.Slice(a, func(i, j int) bool {
+		return a[i] < a[j]
+	})
+	for _, v := range a {
+		fmt.Println(v)
+	}
+
 }
