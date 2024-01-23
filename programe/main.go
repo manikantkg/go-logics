@@ -10,7 +10,8 @@ func main() {
 	//numbers()
 	//pyramid()
 	//ReversePyramid()
-	SortSlice()
+	//SortSlice()
+	sortArray()
 
 }
 
@@ -70,10 +71,30 @@ func ReversePyramid() {
 func SortSlice() {
 	a := []int{5, 3, 4, 7, 8, 9}
 	sort.Slice(a, func(i, j int) bool {
-		return a[i] < a[j]
+		return a[i] < a[j] // a[i] > a[j] for descending order
 	})
 	for _, v := range a {
 		fmt.Println(v)
 	}
 
+}
+
+// sorting with loops only
+func sortArray() {
+	arr := [5]int{50, 30, 20, 10, 40}
+	var min, temp int
+	for i := 0; i <= 4; i++ {
+		min = i
+		for j := i + 1; j <= 4; j++ {
+			if arr[j] < arr[min] {
+
+				// changing the index to show the min value
+				min = j
+			}
+		}
+		temp = arr[i]
+		arr[i] = arr[min]
+		arr[min] = temp
+	}
+	fmt.Println(arr)
 }
