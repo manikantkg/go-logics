@@ -5,7 +5,8 @@ import "fmt"
 func main() {
 	//Fact(4)
 	//numbers()
-	pyramid()
+	//pyramid()
+	ReversePyramid()
 
 }
 
@@ -40,4 +41,22 @@ func pyramid() {
 		fmt.Println()
 	}
 
+}
+
+//Reverse pyramid
+func ReversePyramid() {
+	var rows int = 5
+
+	for i := rows; i >= 1; i-- {
+		for space := 1; space <= rows-i; space++ {
+			fmt.Print(" ")
+		}
+		for j := i; j <= 2*i-1; j++ {
+			fmt.Printf("*")
+		}
+		for j := 0; j < i-1; j++ { //j:=i half pyramid will come
+			fmt.Printf("*")
+		}
+		fmt.Println("")
+	}
 }
