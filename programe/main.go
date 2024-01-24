@@ -11,7 +11,8 @@ func main() {
 	//pyramid()
 	//ReversePyramid()
 	//SortSlice()
-	sortArray()
+	// sortArray()
+	Amstrong()
 
 }
 
@@ -97,4 +98,31 @@ func sortArray() {
 		arr[min] = temp
 	}
 	fmt.Println(arr)
+}
+
+// Amstrong number
+func Amstrong() {
+	fmt.Println("Number = 153")
+	// declare the variables
+	var number, temp, remainder int
+	var result int = 0
+	// initialize the variables
+	number = 153
+	temp = number
+	// Use of For Loop
+	for {
+		remainder = temp % 10
+		result += remainder * remainder * remainder
+		temp /= 10
+		if temp == 0 {
+			break // Break Statement used to stop the loop
+		}
+	}
+	// If satisfies Armstrong condition
+	if result == number {
+		fmt.Printf("%d is an Armstrong number.", number)
+	} else {
+		fmt.Printf("%d is not an Armstrong number.", number)
+	}
+	// print the result
 }
