@@ -31,4 +31,18 @@ func main() {
 		fmt.Printf("Score of %v and value is %v\n", k, v)
 	}
 
+	//Declaring map inside another map
+
+	h := make(map[string]map[string]int)
+	innerMap := make(map[string]int)
+	innerMap["anusha"] = 02
+	innerMap["Karthikeya"] = 03
+	fmt.Println(innerMap)
+	h["Member2"] = innerMap
+	h["Member3"] = innerMap
+
+	fmt.Println("Family member is: ", h["Member2"]["anusha"])
+	fmt.Println("Family member is: ", h["Member3"]["Karthikeya"])
+	fmt.Printf("Family member is '%d'\n", h["Member3"]["Karthikeya"])
+
 }
