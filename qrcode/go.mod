@@ -1,4 +1,4 @@
-module unique
+module qrcodegeneration
 
 go 1.20
 

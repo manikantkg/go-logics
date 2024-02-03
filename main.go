@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 
@@ -13,7 +15,7 @@ func main() {
 	// Rem()
 
 	//Capital
-	deck.CapitalNumbers(deck{}, "My Name Is Manikanta")
+	//deck.CapitalNumbers(deck{}, "My Name Is Manikanta")
 
 	//Maps
 	// KeysPrint()
