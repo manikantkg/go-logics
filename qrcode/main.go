@@ -1,33 +1,42 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
-	"strconv"
 
-	"github.com/skip2/go-qrcode"
+	_ "github.com/go-sql-driver/mysql"
+	"github.com/gorilla/mux"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
 
 type User struct {
-	ID       int ``
-	Name     string
-	Age      int
-	Location string
+	ID       int
+	Name     string `json:"name"`
+	Age      int    `json:"age"`
+	Location string `json:"location"`
 }
+
+var user []User
 
 func main() {
 
-	//qrcode
 	dsn := "root:ap02BL1426*@tcp(127.0.0.1:3306)/qrcode?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	//db, err := sql.Open("mysql", "root:ap02BL1426*@tcp(127.0.0.1:3306)/qrcode")
 	if err != nil {
-		fmt.Println("ERROR while connecting DB>>")
-	} else {
-		fmt.Println("Connected successfully!!!")
+		log.Fatal(err)
 	}
+	//defer db.Close()
+
+	// Check if the database connection is successful
+	// err = db.Ping()
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+
+	router := mux.NewRouter()
 
 	db.AutoMigrate(&User{})
 
@@ -43,111 +52,47 @@ func main() {
 	// 	fmt.Fprintf(w, "Manikanta!")
 	// })
 
-	http.HandleFunc("/Createdata", handleRequest)
+	//http.HandleFunc("/Createdata", handleRequest)
+	router.HandleFunc("/users", getUsers).Methods("GET")
+	router.HandleFunc("/users", createUser).Methods("POST")
 
 	//http.HandleFunc("/generate", handleRequest)
 
-	http.ListenAndServe(":8080", nil)
+	log.Fatal(http.ListenAndServe(":8080", router))
 
 }
 
-func userRequest(writer http.ResponseWriter, request *http.Request) {
-	request.ParseMultipartForm(10 << 20)
-	var name, age, location string = request.FormValue("name"), request.FormValue("age"), request.FormValue("location")
-	var userData []byte
+func getUsers(w http.ResponseWriter, r *http.Request) {
 
-	writer.Header().Set("Content-Type", "application/json")
-
-	if name == "" {
-		writer.WriteHeader(400)
-		json.NewEncoder(writer).Encode(
-			"Could not determine the desired name.",
-		)
-		return
-	}
-
-	ageNumber, err := strconv.Atoi("age")
-	if err != nil || age == "" {
-		writer.WriteHeader(400)
-		json.NewEncoder(writer).Encode("Could not determine the Person age.")
-		return
-	}
-
-	if location == "" {
-		writer.WriteHeader(400)
-		json.NewEncoder(writer).Encode(
-			"Could not determine the desired location.",
-		)
-		return
-	}
-
-	userCode := User{Name: name, Age: ageNumber, Location: location}
-	userData, err = userCode.CreateUser()
+	dsn := "root:ap02BL1426*@tcp(127.0.0.1:3306)/qrcode?charset=utf8mb4&parseTime=True&loc=Local"
+	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	//db, err := sql.Open("mysql", "root:ap02BL1426*@tcp(127.0.0.1:3306)/qrcode")
 	if err != nil {
-		writer.WriteHeader(400)
-		json.NewEncoder(writer).Encode(
-			fmt.Sprintf("Could not create User . %v", err),
-		)
-		return
+		log.Fatal(err)
 	}
 
-	writer.Header().Set("Content-Type", "application/json")
-	writer.Write(userData)
+	var user []User
+	rows := db.Raw("SELECT id, name, age, location FROM users").Scan(&user)
+	if rows.Error != nil {
+		fmt.Println(">>>>>>>>>>>>>>>>>>>Error", rows.Error)
+	}
+	fmt.Println("rows >>>>>", user)
+
+	structString := fmt.Sprintf("%+v\n", user)
+	w.Write([]byte(structString))
+
 }
 
-func (user *User) CreateUser() ([]byte, error) {
-	userCode, err := User.Encode(user.Name, user.Age, user.Location)
+func createUser(w http.ResponseWriter, r *http.Request) {
+
+	dsn := "root:ap02BL1426*@tcp(127.0.0.1:3306)/qrcode?charset=utf8mb4&parseTime=True&loc=Local"
+	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
-		return nil, fmt.Errorf("could not generate a User code: %v", err)
+		log.Fatal(err)
 	}
-	return userCode, nil
-}
+	SQL := "INSERT INTO users (name, age, location) values(?,?,?)"
+	details := User{Name: "Mmm", Age: 33, Location: "HYd"}
+	db.Exec(SQL, details.Name, details.Age, details.Location)
+	fmt.Println(">>>", SQL)
 
-func (code *simpleQRCode) Generate() ([]byte, error) {
-	qrCode, err := qrcode.Encode(code.Content, qrcode.Medium, code.Size)
-	if err != nil {
-		return nil, fmt.Errorf("could not generate a QR code: %v", err)
-	}
-	return qrCode, nil
-}
-
-func handleRequest(writer http.ResponseWriter, request *http.Request) {
-	request.ParseMultipartForm(10 << 20)
-	var size, content string = request.FormValue("size"), request.FormValue("content")
-	var codeData []byte
-
-	writer.Header().Set("Content-Type", "application/json")
-
-	if content == "" {
-		writer.WriteHeader(400)
-		json.NewEncoder(writer).Encode(
-			"Could not determine the desired QR code content.",
-		)
-		return
-	}
-
-	qrCodeSize, err := strconv.Atoi(size)
-	if err != nil || size == "" {
-		writer.WriteHeader(400)
-		json.NewEncoder(writer).Encode("Could not determine the desired QR code size.")
-		return
-	}
-
-	qrCode := simpleQRCode{Content: content, Size: qrCodeSize}
-	codeData, err = qrCode.Generate()
-	if err != nil {
-		writer.WriteHeader(400)
-		json.NewEncoder(writer).Encode(
-			fmt.Sprintf("Could not generate QR code. %v", err),
-		)
-		return
-	}
-
-	writer.Header().Set("Content-Type", "image/png")
-	writer.Write(codeData)
-}
-
-type simpleQRCode struct {
-	Content string
-	Size    int
 }
