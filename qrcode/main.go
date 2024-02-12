@@ -16,6 +16,8 @@ type User struct {
 	Name     string `json:"name"`
 	Age      int    `json:"age"`
 	Location string `json:"location"`
+	Password string `json:"password"`
+	UserName string `json:"username"`
 }
 
 var user []User
@@ -72,7 +74,7 @@ func getUsers(w http.ResponseWriter, r *http.Request) {
 	}
 
 	var user []User
-	rows := db.Raw("SELECT id, name, age, location FROM users").Scan(&user)
+	rows := db.Raw("SELECT id, name, age, location, user_name, password FROM users").Scan(&user)
 	if rows.Error != nil {
 		fmt.Println(">>>>>>>>>>>>>>>>>>>Error", rows.Error)
 	}
@@ -90,9 +92,9 @@ func createUser(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	SQL := "INSERT INTO users (name, age, location) values(?,?,?)"
-	details := User{Name: "Mmm", Age: 33, Location: "HYd"}
-	db.Exec(SQL, details.Name, details.Age, details.Location)
+	SQL := "INSERT INTO users (name, age, location, password, user_name) values(?,?,?,?,?)"
+	details := User{Name: "Mani", Age: 33, Location: "Hyderabad", Password: "abc123", UserName: "Mani123"}
+	db.Exec(SQL, details.Name, details.Age, details.Location, details.Password, details.UserName)
 	fmt.Println(">>>", SQL)
 
 }
