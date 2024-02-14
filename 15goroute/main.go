@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"time"
 )
 
 /*
@@ -11,13 +10,14 @@ import (
 		fmt.Println("c is :", C)
 	}
 */
-func sum(p chan int) {
+/* func sum(p chan<- int) {
+	// var p chan int
 	var b int = 23
-	//p = make(chan int)
-	a := <-p
-	c := a + b
-	fmt.Println("c is:", c)
-}
+
+	p <- 3
+	c := p + b
+	fmt.Println("c is:", c, p)
+} */
 
 func main() {
 	/* fmt.Println("Goroutineds Stats from here!!!")
@@ -25,14 +25,28 @@ func main() {
 	time.Sleep(2 * time.Second) //holds the main function execution by using time package
 	fmt.Println("Goroutineds Ends from here!!!") */
 
-	fmt.Println(">>>>>>>>>>>>>>")
+	/* fmt.Println(">>>>>>>>>>>>>>")
 
-	d := make(chan int)
+	p := make(chan int)
 	//fmt.Println(d)
-	d <- 3
-	panic("Error occured")
-	fmt.Println(<-d)
-	go sum(d)
-	time.Sleep(2 * time.Second)
+	// d <- 3
+	// panic("Error occured")
+	//fmt.Println(<-d)
+	go sum(p)
+	time.Sleep(2 * time.Second) */
 
+	ch := make(chan int)
+	go sum(ch)
+	result := <-ch
+	fmt.Println(">>>>", result)
+
+}
+
+func sum(ch chan<- int) {
+	sum, n := 0, 10
+	for i := 1; i <= n; i++ {
+		sum += i
+		fmt.Println("sum is ", sum)
+	}
+	ch <- sum // Send the sum to the channel
 }

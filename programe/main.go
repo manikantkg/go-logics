@@ -8,12 +8,13 @@ import (
 func main() {
 	//Fact(4)
 	//numbers()
-	//pyramid()
+	// pyramid()
 	//ReversePyramid()
 	//SortSlice()
 	// sortArray()
 	// Amstrong()
 	RotateRight()
+	// rotateRight(1)
 
 }
 
@@ -29,9 +30,8 @@ func Fact(n int) {
 
 func numbers() { //need to check the output
 	for i := 1; i <= 10; i++ {
-		i *= i
+		i = i*(i) + 1
 		fmt.Println(i)
-
 	}
 }
 
@@ -141,4 +141,18 @@ func RotateRight() {
 		fmt.Println(a)
 
 	}
+}
+
+func rotateRight(count int) {
+	arr := []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
+	for i := 0; i < len(arr); i++ {
+		var j, last int
+		length := len(arr)
+		last = arr[length-1]
+		for j = length - 1; j > 0; j-- {
+			arr[j] = arr[j-1]
+		}
+		arr[0] = last
+	}
+	fmt.Println(arr)
 }
