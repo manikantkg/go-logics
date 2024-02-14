@@ -12,7 +12,8 @@ func main() {
 	//ReversePyramid()
 	//SortSlice()
 	// sortArray()
-	Amstrong()
+	// Amstrong()
+	RotateRight()
 
 }
 
@@ -125,4 +126,19 @@ func Amstrong() {
 		fmt.Printf("%d is not an Armstrong number.", number)
 	}
 	// print the result
+}
+
+func RotateRight() {
+	a := []int{1, 2, 3, 4, 5}
+	var temp int
+	fmt.Println("Before Rotation: ", a)
+	for i := 0; i < len(a); i++ {
+		for j := 0; j < i; j++ {
+			temp = a[i]
+			a[i] = a[j]
+			a[j] = temp
+		}
+		fmt.Println(a)
+
+	}
 }
