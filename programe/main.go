@@ -7,14 +7,15 @@ import (
 
 func main() {
 	//Fact(4)
-	//numbers()
+	Evennumbers()
 	// pyramid()
 	//ReversePyramid()
 	//SortSlice()
 	// sortArray()
 	// Amstrong()
-	RotateRight()
+	//RotateRight()
 	// rotateRight(1)
+	RemoveElement()
 
 }
 
@@ -28,9 +29,9 @@ func Fact(n int) {
 
 }
 
-func numbers() { //need to check the output
-	for i := 1; i <= 10; i++ {
-		i = i*(i) + 1
+func Evennumbers() { //need to check the output
+	for i := 0; i <= 10; i++ {
+		i += 2
 		fmt.Println(i)
 	}
 }
@@ -154,5 +155,12 @@ func rotateRight(count int) {
 		}
 		arr[0] = last
 	}
+	fmt.Println(arr)
+}
+
+// Removing a single element from slice
+func RemoveElement() {
+	arr := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	arr = append(arr[:2], arr[3:]...)
 	fmt.Println(arr)
 }
