@@ -7,7 +7,7 @@ import (
 
 func main() {
 	//Fact(4)
-	Evennumbers()
+	// Evennumbers()
 	// pyramid()
 	//ReversePyramid()
 	//SortSlice()
@@ -15,8 +15,11 @@ func main() {
 	// Amstrong()
 	//RotateRight()
 	// rotateRight(1)
-	RemoveElement()
-
+	// RemoveElement()
+	input := "maniaknta"
+	fmt.Println("input string is : ", input)
+	res := RemoveDuplicates(input)
+	fmt.Println(res)
 }
 
 func Fact(n int) {
@@ -163,4 +166,21 @@ func RemoveElement() {
 	arr := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 	arr = append(arr[:2], arr[3:]...)
 	fmt.Println(arr)
+}
+
+// Remove Duplicates from string
+func RemoveDuplicates(input string) string {
+	charCount := make(map[rune]int)
+
+	var result string
+
+	for _, char := range input {
+		charCount[char]++
+	}
+	for _, char := range input {
+		if charCount[char] == 1 {
+			result += string(char)
+		}
+	}
+	return result
 }
