@@ -22,11 +22,11 @@ func main() {
 	thorRating := 3
 	fmt.Printf("thorRating is %v and type %T \n", thorRating, thorRating)
 
-	var Itonman, CapAmerica string = "I am Ironman", "I am captain America"
-	fmt.Println(Itonman, CapAmerica)
+	var Ironman, CapAmerica string = "I am Ironman", "I am captain America"
+	fmt.Println(Ironman, CapAmerica)
 
 	var defaultValue string
-	fmt.Println(defaultValue)
+	fmt.Println("default value is : ", defaultValue)
 
 	var (
 		spiderman = "I am a Spiderman"
