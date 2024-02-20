@@ -17,6 +17,7 @@ func main() {
 	fmt.Println(thor)
 	fmt.Println(reflect.TypeOf(thor)) //finding type with the help of reflect package
 	// fmt.Println(reflect.Interface, "thor")
+	fmt.Printf("%T %v\n", thor, thor)
 
 	thorRating := 3
 	fmt.Printf("thorRating is %v and type %T \n", thorRating, thorRating)
