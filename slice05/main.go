@@ -8,12 +8,15 @@ import (
 func main() {
 	var things = []string{"abc", "bcd", "cde"}
 	fmt.Println(things)
+	fmt.Printf(" len %v and cap %v\n ", len(things), cap(things))
 
 	things = append(things, "jkl")
 	fmt.Println(things)
+	fmt.Printf(" len %v and cap %v\n ", len(things), cap(things))
 
 	things = append(things[1:])
 	fmt.Println(things)
+	fmt.Printf(" len %v and cap %v\n ", len(things), cap(things))
 
 	things = append(things[1 : len(things)-1])
 	fmt.Println(things)
