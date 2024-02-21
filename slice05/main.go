@@ -52,4 +52,10 @@ func Arr() {
 	fmt.Println(c)
 	fmt.Println(d)
 	fmt.Println(e)
+
+	m := []int{1, 2, 3, 4, 5}
+	fmt.Println(m, &m)
+	n := append(m[:2], m[3:]...)
+	fmt.Println("##", n)
+	fmt.Println("^^", m, &m)
 }
