@@ -16,7 +16,7 @@ func main() {
 
 	things = append(things[1:])
 	fmt.Println(things)
-	fmt.Printf(" len %v and cap %v\n ", len(things), cap(things))
+	fmt.Printf(" len %v and cap %v\n ", len(things), cap(things)) //Observe len and cap every time
 
 	things = append(things[1 : len(things)-1])
 	fmt.Println(things)
@@ -25,8 +25,11 @@ func main() {
 	heros[0] = "asdf"
 	heros[1] = "qwer"
 	heros[2] = "tyi"
+	fmt.Printf("heros len %v and cap %v\n ", len(heros), cap(heros))
 
 	heros = append(heros, "mnb")
+	fmt.Printf(" heros len %v and cap %v\n ", len(heros), cap(heros))
+
 	fmt.Println(heros)
 	fmt.Println(cap(heros)) //observe the difference between cap & length
 
@@ -34,4 +37,19 @@ func main() {
 
 	isSorted := sort.IntSlice(myints) //know more about sort library
 	fmt.Println(isSorted, ">>>>>>>>>>")
+
+	Arr()
+}
+
+func Arr() {
+	a := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	fmt.Printf("Arr is %v", a)
+	b := a[:]
+	c := a[3:]
+	d := a[:6]
+	e := a[3:7]
+	fmt.Println(b)
+	fmt.Println(c)
+	fmt.Println(d)
+	fmt.Println(e)
 }
