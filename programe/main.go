@@ -16,10 +16,13 @@ func main() {
 	//RotateRight()
 	// rotateRight(1)
 	// RemoveElement()
-	input := "maniaknta"
-	fmt.Println("input string is : ", input)
-	res := RemoveDuplicates(input)
-	fmt.Println(res)
+	// input := "maniaknta"
+	// fmt.Println("input string is : ", input)
+	// res := RemoveDuplicates(input)
+	// fmt.Println(res)
+
+	str := "manikanta"
+	Small2Cap(str)
 }
 
 func Fact(n int) {
@@ -183,4 +186,16 @@ func RemoveDuplicates(input string) string {
 		}
 	}
 	return result
+}
+
+//Small to cap
+
+func Small2Cap(str string) {
+	r := []rune(str)
+
+	for i := 0; i < len(r); i++ {
+		r[i] -= 32
+	}
+	fmt.Println("Cap is : ", string(r))
+
 }
