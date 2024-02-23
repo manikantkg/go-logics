@@ -7,7 +7,8 @@ import (
 
 func main() {
 	//Fact(4)
-	// Evennumbers()
+	EvenNumbers()
+	Oddnumbers()
 	// pyramid()
 	//ReversePyramid()
 	//SortSlice()
@@ -16,14 +17,13 @@ func main() {
 	//RotateRight()
 	// rotateRight(1)
 	// RemoveElement()
-	// input := "maniaknta"
+	// input := "manikanta"
 	// fmt.Println("input string is : ", input)
 	// res := RemoveDuplicates(input)
 	// fmt.Println(res)
 
-	str := "manikanta"
-	//Small2Cap(str)
-	SortString(str)
+	//Small2Cap(input)
+	// SortString(input)
 }
 
 func Fact(n int) {
@@ -36,10 +36,17 @@ func Fact(n int) {
 
 }
 
-func Evennumbers() { //need to check the output
+func Oddnumbers() { //need to check the output
 	for i := 0; i <= 10; i++ {
-		i += 2
-		fmt.Println(i)
+		i++
+		fmt.Printf("Odd nums are:%v\n", i)
+	}
+}
+
+func EvenNumbers() { //need to check the output
+	for i := 1; i < 10; i++ {
+		i++
+		fmt.Printf("Even number are : %v\n", i)
 	}
 }
 
@@ -187,6 +194,16 @@ func RemoveDuplicates(input string) string {
 		}
 	}
 	return result
+
+	//another method
+	/* c := []rune(input)
+	for i := len(c) - 1; i > 0; i-- {
+		if i < len(c) && c[i] == c[i-1] {
+			c = append(c[:i-1], c[:i+1]...)
+		}
+
+	}
+	return string(c) */
 }
 
 //Small to cap
