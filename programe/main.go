@@ -7,8 +7,9 @@ import (
 
 func main() {
 	//Fact(4)
-	EvenNumbers()
-	Oddnumbers()
+	// EvenNumbers()
+	// Oddnumbers()
+	OddEven()
 	// pyramid()
 	//ReversePyramid()
 	//SortSlice()
@@ -37,16 +38,30 @@ func Fact(n int) {
 }
 
 func Oddnumbers() { //need to check the output
-	for i := 0; i <= 10; i++ {
+	for i := 0; i < 10; i++ {
 		i++
 		fmt.Printf("Odd nums are:%v\n", i)
 	}
 }
 
+// Even numbers
 func EvenNumbers() { //need to check the output
 	for i := 1; i < 10; i++ {
 		i++
 		fmt.Printf("Even number are : %v\n", i)
+	}
+}
+
+// Both Odd & Even
+func OddEven() {
+	for i := 0; i < 10; i++ {
+		if i == 0 {
+			continue
+		} else if i%2 == 0 {
+			fmt.Println(i, "Even number")
+		} else if i%2 != 0 {
+			fmt.Println(i, "Odd number")
+		}
 	}
 }
 
