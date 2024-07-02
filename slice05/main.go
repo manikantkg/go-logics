@@ -2,11 +2,10 @@ package main
 
 import (
 	"fmt"
-	"sort"
 )
 
 func main() {
-	var things = []string{"abc", "bcd", "cde"}
+	/* var things = []string{"abc", "bcd", "cde"}
 	fmt.Println(things)
 	fmt.Printf(" len %v and cap %v\n ", len(things), cap(things))
 
@@ -25,9 +24,9 @@ func main() {
 	heros[0] = "asdf"
 	heros[1] = "qwer"
 	heros[2] = "tyi"
-	fmt.Printf("heros len %v and cap %v\n ", len(heros), cap(heros))
+	fmt.Printf("heros len %v and cap %v\n ", len(heros), cap(heros)) */
 
-	heros = append(heros, "mnb")
+	/* heros = append(heros, "mnb")
 	fmt.Printf(" heros len %v and cap %v\n ", len(heros), cap(heros))
 
 	fmt.Println(heros)
@@ -38,7 +37,11 @@ func main() {
 	isSorted := sort.IntSlice(myints) //know more about sort library
 	fmt.Println(isSorted, ">>>>>>>>>>")
 
-	Arr()
+	Arr() */
+	arr1 := []int{1, 2, 4, 5, 6}
+	arr2 := []int{9, 8, 4, 5, 7}
+	res := Intersection(arr1, arr2)
+	fmt.Println(">>>", res)
 }
 
 func Arr() {
@@ -58,4 +61,19 @@ func Arr() {
 	n := append(m[:2], m[3:]...)
 	fmt.Println("##", n)
 	fmt.Println("^^", m, &m)
+
+}
+
+func Intersection(arr1, arr2 []int) []int {
+	intersection := make([]int, 0)
+	for _, num1 := range arr1 {
+		for _, num2 := range arr2 {
+			if num1 == num2 {
+				intersection = append(intersection, num1)
+				break
+			}
+		}
+
+	}
+	return intersection
 }
