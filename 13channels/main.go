@@ -66,6 +66,8 @@ func Select() {
 		ch2 <- "Hello from ch2"
 	}()
 
+	time.Sleep(3 * time.Second)
+
 	select {
 	case msg1 := <-ch1:
 		fmt.Println(msg1)
