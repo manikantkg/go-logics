@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // Example
 // Declare an Interface Type and methods does not have a body
