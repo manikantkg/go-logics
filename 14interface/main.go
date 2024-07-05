@@ -177,3 +177,28 @@ func (r Rectangle) Area() float64 {
 func printArea(s Shape) {
 	fmt.Printf("Area of the shape: %.2f\n", s.Area())
 }
+
+/*
+package main
+
+import "fmt"
+
+type tank interface {
+	Area() float64
+}
+
+type Rectangle struct {
+	length, bredth float64
+}
+
+func (r Rectangle) Area() float64 {
+	area := r.length * r.bredth
+	return area
+}
+
+func main() {
+	var t tank
+	t = Rectangle{3, 4}
+	fmt.Println(t.Area())
+}
+*/
