@@ -73,7 +73,6 @@ func Intersection(arr1, arr2 []int) []int {
 				break
 			}
 		}
-
 	}
 	return intersection
 }
