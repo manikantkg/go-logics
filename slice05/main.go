@@ -42,6 +42,9 @@ func main() {
 	arr2 := []int{9, 8, 4, 5, 7}
 	res := Intersection(arr1, arr2)
 	fmt.Println(">>>", res)
+
+	//TestArray
+	TestArray()
 }
 
 func Arr() {
@@ -75,4 +78,18 @@ func Intersection(arr1, arr2 []int) []int {
 		}
 	}
 	return intersection
+}
+
+func TestArray() {
+	var a []int = []int{1, 2, 3, 4, 5}
+	fmt.Println("a is :", a)
+
+	b := a
+	fmt.Println("<><>", b)
+	c := &a
+	a[3] = 1000
+	fmt.Println("c is : ", *c)
+
+	d := append(d, a...)
+	fmt.Println("d is ", d)
 }
