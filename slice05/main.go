@@ -90,6 +90,19 @@ func TestArray() {
 	a[3] = 1000
 	fmt.Println("c is : ", *c)
 
-	d := append(d, a...)
+	var d []int
+	d = append(d, a...)
 	fmt.Println("d is ", d)
+
+	//copy using loop
+	newArray := make([]int, len(a))
+	for i, v := range a {
+		newArray[i] = v
+	}
+	fmt.Println("new array is: ", newArray)
+
+	//using copy
+	copiedArray := make([]int, len(d))
+	copy(copiedArray, d)
+	fmt.Println("copied Array : ", copiedArray)
 }
