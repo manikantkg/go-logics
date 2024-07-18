@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"sort"
 )
 
 func main() {
@@ -105,4 +106,14 @@ func TestArray() {
 	copiedArray := make([]int, len(d))
 	copy(copiedArray, d)
 	fmt.Println("copied Array : ", copiedArray)
+
+	//copy slice elements by using append
+	slice1 := []int{1, 2, 3}
+	slice2 := []int{2, 5, 8}
+	var s3 []int
+	s3 = append(s3, slice1...)
+	s3 = append(s3, slice2...)
+	fmt.Println("resilt is >>> ", s3)
+	sort.Ints(s3)
+	fmt.Println(s3)
 }
