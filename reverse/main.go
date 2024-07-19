@@ -8,6 +8,9 @@ func main() {
 	fmt.Println(Reverse(str))
 	fmt.Println(Rev(str))
 
+	//Fibino
+	printFibonacciSeries()
+
 }
 
 func Reverse(str string) (result string) {
@@ -23,4 +26,23 @@ func Rev(s string) string {
 		rns[i], rns[j] = rns[j], rns[i]
 	}
 	return string(rns)
+}
+
+//printFibonacciSeries
+
+func printFibonacciSeries() {
+	n := 15
+	a, b := 0, 1
+	c := b
+	for true {
+		c = b
+		b = a + b
+		if b >= n {
+			fmt.Println()
+			break
+		}
+		a = c
+		fmt.Println(b)
+
+	}
 }
