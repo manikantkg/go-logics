@@ -10,4 +10,7 @@ func main() {
 	b := [5]int{1, 2, 3, 4, 5}
 	fmt.Println(&b[1])
 
+	c := new([]int)
+	fmt.Println("len", len(*c)) //representing pointer
+
 }
