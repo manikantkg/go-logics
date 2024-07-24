@@ -13,6 +13,9 @@ func main() {
 	}
 	//count upper case function
 	CountUpperCase()
+
+	//Factors
+	Factors()
 }
 
 //count uppercase letters
@@ -26,4 +29,17 @@ func CountUpperCase() {
 		}
 	}
 	fmt.Println("Count is : ", count)
+}
+
+//Factors of a number
+func Factors() {
+	var num int
+	fmt.Print("Enter the num: ")
+	fmt.Scan(&num)
+	for i := 1; i <= num; i++ {
+		if num%i == 0 {
+			fmt.Println(i)
+		}
+
+	}
 }
