@@ -39,13 +39,20 @@ func main() {
 	fmt.Println(isSorted, ">>>>>>>>>>")
 
 	Arr() */
-	arr1 := []int{1, 2, 4, 5, 6}
+	/* arr1 := []int{1, 2, 4, 5, 6}
 	arr2 := []int{9, 8, 4, 5, 7}
 	res := Intersection(arr1, arr2)
 	fmt.Println(">>>", res)
 
 	//TestArray
-	TestArray()
+	TestArray() */
+
+	//Addition of two arrays
+	//AdditionOfTwoArrays()
+	//second method
+	//SecondMethodAddition()
+	//using range
+	AdditionUsingRange()
 }
 
 func Arr() {
@@ -116,4 +123,80 @@ func TestArray() {
 	fmt.Println("resilt is >>> ", s3)
 	sort.Ints(s3)
 	fmt.Println(s3)
+}
+
+// Addition of two arrays
+func AdditionOfTwoArrays() {
+	var size, i int
+
+	fmt.Println("Enter the size of Array:")
+	fmt.Scan(&size)
+
+	a := make([]int, size)
+	b := make([]int, size)
+	c := make([]int, size)
+
+	fmt.Println("Enter the elements of Array1:")
+	for i = 0; i < size; i++ {
+		fmt.Scan(&a[i])
+	}
+
+	fmt.Println("Enter the elements of Array2:")
+	for i = 0; i < size; i++ {
+		fmt.Scan(&b[i])
+	}
+
+	for i = 0; i < size; i++ {
+		c[i] = a[i] + b[i]
+		fmt.Println(c[i], " ")
+	}
+	fmt.Println()
+}
+
+// Second method
+func SecondMethodAddition() {
+	var i int
+	var a [5]int
+	var b [5]int
+	var c [5]int
+	fmt.Println("Enter elements in array1 = ")
+	for i = 0; i < 5; i++ {
+		fmt.Scan(&a[i])
+	}
+
+	fmt.Println("Enter elements in array2 = ")
+	for i = 0; i < 5; i++ {
+		fmt.Scan(&b[i])
+	}
+
+	for x, _ := range a {
+		c[x] = a[x] + b[x]
+		fmt.Print(c[x], " ")
+	}
+}
+
+// using range
+func AdditionUsingRange() {
+	var size int
+
+	fmt.Println("Enter the size of Array:")
+	fmt.Scan(&size)
+
+	a := make([]int, size)
+	b := make([]int, size)
+	c := make([]int, size)
+	fmt.Println("Enter elements in array1 = ")
+	for x := range a {
+		fmt.Scan(&a[x])
+	}
+
+	fmt.Println("Enter elements in array2 = ")
+	for y := range b {
+		fmt.Scan(&b[y])
+	}
+
+	for res := range c {
+		c[res] = a[res] + b[res]
+		fmt.Print(c[res], " ")
+	}
 }
