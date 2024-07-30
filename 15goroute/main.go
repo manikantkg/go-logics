@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"sync"
 )
 
 /*
@@ -40,6 +41,24 @@ func main() {
 	result := <-ch
 	fmt.Println(">>>>", result)
 
+	//waitgroups
+	c := make(chan int)
+	wg.Add(5)
+	for i := 0; i < 5; i++ {
+		go R(c)
+
+	}
+	go func() {  //if we dont use this anonymus function we will get deadlock condition
+		wg.Wait()
+		close(c)
+	}()
+
+	for range c {
+		// This loop will continue until the channel is closed
+	}
+
+	fmt.Println("All goroutines finished executing")
+
 }
 
 func sum(ch chan<- int) {
@@ -49,4 +68,18 @@ func sum(ch chan<- int) {
 		fmt.Println("sum is ", sum)
 	}
 	ch <- sum // Send the sum to the channel
+}
+
+//wait groups
+
+var wg sync.WaitGroup
+
+func R(c chan int) {
+	defer wg.Done()
+	a := 12
+	b := 10
+	d := b + a
+	fmt.Println(d)
+	c <- 1
+
 }

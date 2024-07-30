@@ -34,6 +34,6 @@ func main() {
 	} else if mynumRating == 4 || mynumRating == 3 {
 		fmt.Println("we are always improving")
 	} else if mynumRating < 3 {
-		fmt.Println("Need serious work on our side")
+		fmt.Println("Need serious hard work on our side")
 	}
 }
