@@ -16,6 +16,13 @@ func main() {
 
 	//Factors
 	Factors()
+
+	//is Unique
+	fmt.Println(isUnique("abcdef")) // true
+	fmt.Println(isUnique("aabbcc")) // false
+	//FizzBuzz
+	num := 100
+	FizzBuzz(num)
 }
 
 //count uppercase letters
@@ -41,5 +48,40 @@ func Factors() {
 			fmt.Println(i)
 		}
 
+	}
+}
+
+//is unique RXbenifits question2
+func isUnique(s string) bool {
+	// Assuming ASCII characters, there are only 128 unique possible characters.
+	if len(s) > 128 {
+		return false
+	}
+
+	// Map to keep track of characters we have seen.
+	charMap := make(map[rune]bool)
+
+	for _, char := range s {
+		if charMap[char] {
+			return false // Character already seen, hence not unique.
+		}
+		charMap[char] = true
+	}
+	return true
+}
+
+//FizzBuzz RXbenifits Question1
+
+func FizzBuzz(num int) {
+	for i := 1; i < num; i++ {
+		if i%3 == 0 && i%5 == 0 {
+			fmt.Println("FizzBuzz")
+		} else if i%3 == 0 {
+			fmt.Println("Fizz")
+		} else if i%5 == 0 {
+			fmt.Println("Buzz")
+		} else {
+			fmt.Println(i)
+		}
 	}
 }
