@@ -5,40 +5,35 @@ import (
 	"sync"
 )
 
+var wg sync.WaitGroup
+
 func main() {
-	var wg sync.WaitGroup
+	defer wg.Done()
+	//
+	wg.Add(2)
+	go hello()
+	go world()
+	wg.Done()
+
+	fmt.Println("Mani ends!!!")
+	//using anonymus
 	wg.Add(11)
 	abc := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
-
-	for i, _ := range abc {
-
+	for _, v := range abc {
 		go func(i int) {
-			defer wg.Done()
-			fmt.Println("i is :", i, "index value is >>", abc[i])
-		}(i)
-
+			wg.Wait()
+			fmt.Println("i is :", i, "index value is >>", v)
+		}(v)
 		// fmt.Println(i, v)
 	}
-	wg.Wait()
 }
 
-// func main() {
-// 	var wg sync.WaitGroup
-// 	wg.Add(2)
-// 	go hello(&wg)
-// 	go world()
-// 	wg.Done()
+func hello() {
+	defer wg.Done()
+	fmt.Println("Hello")
 
-// 	fmt.Println("Mani ends!!!")
-
-// }
-
-// func hello(wg sync.WaitGroup) {
-// 	defer wg.Done()
-// 	fmt.Println("Hello")
-
-// }
-// func world(wg sync.WaitGroup) {
-// 	defer wg.Done()
-// 	fmt.Println("World")
-// }
+}
+func world() {
+	defer wg.Done()
+	fmt.Println("World")
+}
