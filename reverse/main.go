@@ -20,6 +20,9 @@ func main() {
 	//string reverse infosys
 	StringReverse("mani kan ta")
 
+	//single string reverse
+	singleStringReverse()
+
 	//printing excel columns
 
 	var numTests int
@@ -69,6 +72,20 @@ func StringReverse(s string) {
 
 }
 
+// single string reverse
+func singleStringReverse() {
+	var num string = "abcde"
+	r := []rune(num)
+
+	for i := 0; i < len(r)/2; i++ {
+		temp := r[i]
+		r[i] = r[len(r)-1-i]
+		r[len(r)-1-i] = temp
+	}
+
+	fmt.Println(string(r))
+}
+
 //printFibonacciSeries
 
 func printFibonacciSeries() {
@@ -93,7 +110,7 @@ func printFibonacciSeries() {
 func PrimeNumber() {
 	var num, count int
 	count = 0
-	fmt.Println("Rnter the Number")
+	fmt.Println("Enter the Number")
 	fmt.Scanln(&num)
 	for i := 2; i < num/2; i++ {
 		if num%i == 0 {
