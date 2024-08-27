@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 )
 
 func main() {
@@ -15,6 +16,9 @@ func main() {
 
 	//Prime
 	PrimeNumber()
+
+	//string reverse infosys
+	StringReverse("mani kan ta")
 
 	//printing excel columns
 
@@ -34,6 +38,7 @@ func main() {
 
 }
 
+// revwersing the characters in the same place
 func Reverse(str string) (result string) {
 	for _, v := range str {
 		result = string(v) + result
@@ -41,12 +46,27 @@ func Reverse(str string) (result string) {
 	return
 }
 
+// Reversing the srings
 func Rev(s string) string {
 	rns := []rune(s)
 	for i, j := 0, len(rns)-1; i < j; i, j = i+1, j-1 {
 		rns[i], rns[j] = rns[j], rns[i]
 	}
 	return string(rns)
+}
+
+// Reversing the string using string library
+func StringReverse(s string) {
+	words := strings.Fields(s)
+	for i, word := range words {
+		r := []rune(word)
+		for i, j := 0, len(r)-1; i < j; i, j = i+1, j-1 {
+			r[i], r[j] = r[j], r[i]
+		}
+		words[i] = string(r)
+	}
+	fmt.Println(strings.Join(words, " "))
+
 }
 
 //printFibonacciSeries
