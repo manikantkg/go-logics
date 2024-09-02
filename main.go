@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"sort"
 )
 
 func main() {
@@ -41,7 +42,6 @@ func Unique(arr []int) []int {
 	return result
 }
 
-/*
 //Removing Susequences
 
 func Remove(s string) string {
@@ -98,8 +98,11 @@ func Values() {
 //Sort map by keys
 
 func KeysPrint() {
-	basket := map[string]int{"orange": 5, "apple": 7,
-		"mango": 3, "strawberry": 9}
+	basket := map[string]int{
+		"orange":     5,
+		"apple":      7,
+		"mango":      3,
+		"strawberry": 9}
 
 	keys := make([]string, 0, len(basket))
 
@@ -147,6 +150,7 @@ func Pyramid() {
 	}
 }
 
+/*
 	// r, temp := 5, 1
 	// 	for i := 0; i < 5; i++ {
 	// 		for j := 1; j < r-1; j++ {
